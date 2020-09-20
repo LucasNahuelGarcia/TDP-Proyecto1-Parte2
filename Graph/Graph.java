@@ -14,12 +14,12 @@ public class Graph {
    * Crea un nuevo Graph vacío.
    */
   public Graph() {
-    if(logger == null)
+    if (logger == null)
       inicializarLogger();
     nodos = new HashMap<>();
   }
 
-  private void inicializarLogger(){
+  private void inicializarLogger() {
     Handler handler = new ConsoleHandler();
     logger = Logger.getLogger(Graph.class.getName());
     handler.setLevel(Level.FINE);
@@ -33,8 +33,11 @@ public class Graph {
    * @param node nodo a agregar.
    */
   public void addNode(int node) {
+    logger.log(Level.INFO, "Agregando el nodo " + node + " al grafo.");
     if (nodos.get(node) == null)
       nodos.put(node, new ArrayList<>());
+    else
+      logger.log(Level.WARNING, "El nodo " + node + " se intentó agregar, pero ya existía.");
   }
 
   /**
