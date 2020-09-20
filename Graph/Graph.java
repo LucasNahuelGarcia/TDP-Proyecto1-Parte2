@@ -48,11 +48,21 @@ public class Graph {
    * @param node2 nodo que tiene como extremo el arco.
    */
   public void addEdge(int node1, int node2) {
+    logger.log(Level.FINE, "Agregando el arco entre " + node1 + " y " + node2);
     List<Integer> arcos = nodos.get(node1);
 
-    if (arcos != null && nodos.get(node2) != null && !arcos.contains(node2)) {
-      arcos.add(node2);
-    }
+    if (arcos != null)
+      if (nodos.get(node2) != null)
+        if (!arcos.contains(node2))
+          arcos.add(node2);
+        else
+          logger.log(Level.WARNING, "El arco entre " + node1 + " y " + node2 + " ya existe");
+      else
+        logger.log(Level.WARNING, node2 + " no esta en el grafo.");
+    else
+      logger.log(Level.WARNING, node1 + " no esta en el grafo.");
+  }
+
   }
 
   /**
@@ -62,7 +72,9 @@ public class Graph {
    * @param node nodo a eliminar.
    */
   public void removeNode(int node) {
-    nodos.remove(node);
+    logger.log(Level.FINE, "Removiendo el nodo " + node);
+    if (nodos.remove(node) == null)
+      logger.log(Level.WARNING, "El nodo " + node + " no existe en el grafo.");
   }
 
   /**
@@ -73,10 +85,18 @@ public class Graph {
    * @param node2
    */
   public void removeEdge(int node1, int node2) {
+    logger.log(Level.FINE, "Removiendo el eje entre " + node1 + " y " + node2);
     List<Integer> arcos = nodos.get(node1);
 
-    if (arcos != null && nodos.get(node2) != null && arcos.contains(node2)) {
-      arcos.remove(node2);
-    }
+    if (arcos != null)
+      if (nodos.get(node2) != null)
+        if (arcos.contains(node2))
+          arcos.remove(node2);
+        else
+          logger.log(Level.WARNING, "El arco entre " + node1 + " y " + node2 + " no existe");
+      else
+        logger.log(Level.WARNING, "El nodo " + node2 + " no existe");
+    else
+      logger.log(Level.WARNING, "El nodo " + node1 + " no existe");
   }
 }
