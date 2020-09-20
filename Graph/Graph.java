@@ -63,8 +63,6 @@ public class Graph {
       logger.log(Level.WARNING, node1 + " no esta en el grafo.");
   }
 
-  }
-
   /**
    * Remueve el nodo "node" del grafo, si el parámetro es un nodo de la
    * estructura.
