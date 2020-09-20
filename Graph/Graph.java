@@ -1,20 +1,30 @@
 package Graph;
 
 import java.util.*;
-
+import java.util.logging.*;
 
 /**
  * Implementa un grafo dirigido no pesado.
  */
 public class Graph {
+  private static Logger logger;
   private Map<Integer, List<Integer>> nodos;
 
+  /**
+   * Crea un nuevo Graph vacío.
+   */
   public Graph() {
+    if(logger == null)
+      inicializarLogger();
     nodos = new HashMap<>();
   }
 
-  public int size() {
-    return nodos.size();
+  private void inicializarLogger(){
+    Handler handler = new ConsoleHandler();
+    logger = Logger.getLogger(Graph.class.getName());
+    handler.setLevel(Level.FINE);
+    logger.addHandler(handler);
+    logger.setLevel(Level.FINE);
   }
 
   /**
