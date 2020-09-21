@@ -18,5 +18,12 @@ public class LoggingPrueba {
     grafo.addEdge(2, 8);
     grafo.addEdge(9, 4);
     grafo.addEdge(5, 23);
+
+    //elimino arco existente
+    grafo.removeEdge(2, 4);
+
+    //lo elimino de vuelta
+    grafo.removeEdge(2, 4);
+  
   }
 }
