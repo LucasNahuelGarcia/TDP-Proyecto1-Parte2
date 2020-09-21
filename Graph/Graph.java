@@ -8,7 +8,7 @@ import java.util.logging.*;
  */
 public class Graph {
   private static Logger logger;
-  private Map<Integer, List<Integer>> nodos;
+  private Map<Integer, Set<Integer>> nodos;
 
   /**
    * Crea un nuevo Graph vacío.
@@ -35,7 +35,7 @@ public class Graph {
   public void addNode(int node) {
     logger.log(Level.INFO, "Agregando el nodo " + node + " al grafo.");
     if (nodos.get(node) == null)
-      nodos.put(node, new ArrayList<>());
+      nodos.put(node, new HashSet<>());
     else
       logger.log(Level.WARNING, "El nodo " + node + " se intentó agregar, pero ya existía.");
   }
@@ -49,7 +49,7 @@ public class Graph {
    */
   public void addEdge(int node1, int node2) {
     logger.log(Level.INFO, "Agregando el arco entre " + node1 + " y " + node2);
-    List<Integer> arcos = nodos.get(node1);
+    Set<Integer> arcos = nodos.get(node1);
 
     if (arcos != null)
       if (nodos.get(node2) != null)
@@ -84,7 +84,7 @@ public class Graph {
    */
   public void removeEdge(int node1, int node2) {
     logger.log(Level.INFO, "Removiendo el eje entre " + node1 + " y " + node2);
-    List<Integer> arcos = nodos.get(node1);
+    Set<Integer> arcos = nodos.get(node1);
 
     if (arcos != null)
       if (nodos.get(node2) != null)
