@@ -25,6 +25,11 @@ public class Graph {
     handler.setLevel(Level.FINE);
     logger.addHandler(handler);
     logger.setLevel(Level.FINE);
+
+    Logger rootLogger = logger.getParent();
+    for (Handler h : rootLogger.getHandlers()) {
+      h.setLevel(Level.OFF);
+    }
   }
 
   /**
