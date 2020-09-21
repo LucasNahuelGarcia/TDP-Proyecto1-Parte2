@@ -48,7 +48,7 @@ public class Graph {
    * @param node2 nodo que tiene como extremo el arco.
    */
   public void addEdge(int node1, int node2) {
-    logger.log(Level.FINE, "Agregando el arco entre " + node1 + " y " + node2);
+    logger.log(Level.INFO, "Agregando el arco entre " + node1 + " y " + node2);
     List<Integer> arcos = nodos.get(node1);
 
     if (arcos != null)
@@ -70,7 +70,7 @@ public class Graph {
    * @param node nodo a eliminar.
    */
   public void removeNode(int node) {
-    logger.log(Level.FINE, "Removiendo el nodo " + node);
+    logger.log(Level.INFO, "Removiendo el nodo " + node);
     if (nodos.remove(node) == null)
       logger.log(Level.WARNING, "El nodo " + node + " no existe en el grafo.");
   }
@@ -83,7 +83,7 @@ public class Graph {
    * @param node2
    */
   public void removeEdge(int node1, int node2) {
-    logger.log(Level.FINE, "Removiendo el eje entre " + node1 + " y " + node2);
+    logger.log(Level.INFO, "Removiendo el eje entre " + node1 + " y " + node2);
     List<Integer> arcos = nodos.get(node1);
 
     if (arcos != null)
